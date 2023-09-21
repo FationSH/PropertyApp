@@ -11,16 +11,16 @@ Server in nodejs and express, uses mongo database. Functions also as a proxy ser
 
 ## Screenshots
 
-![image](https://github.com/FationSH/PropertyApp/login_page.png)
+![image](https://github.com/FationSH/PropertyApp/blob/master/login_page.png)
 
-![image](https://github.com/FationSH/PropertyApp/home_page.png)
+![image](https://github.com/FationSH/PropertyApp/blob/master/home_page.png)
 
-![image](https://github.com/FationSH/PropertyApp/add_property_page.png)
+![image](https://github.com/FationSH/PropertyApp/blob/master/add_property_page.png)
 
-![image](https://github.com/FationSH/PropertyApp/register_page.png)
+![image](https://github.com/FationSH/PropertyApp/blob/master/register_page.png)
 
 ## How to Run
-Install on you pc (Windows)
+Install on your pc (Windows)
 NodeJS: 18.14.0
 MongoDB: 7.0.1
 

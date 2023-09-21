@@ -9,7 +9,7 @@ Server in nodejs and express, uses mongo database. Functions also as a proxy ser
 * Add/list your home ad
 * Delete home ad
 
-## screenshots
+## Screenshots
 
 ![image](https://github.com/FationSH/PropertyApp/login_page.png)
 
@@ -24,7 +24,7 @@ Install on you pc (Windows)
 NodeJS: 18.14.0
 MongoDB: 7.0.1
 
-### server
+### server:
 cd server
 npm install
 npm start

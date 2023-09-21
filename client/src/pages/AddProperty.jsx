@@ -20,6 +20,8 @@ import {
     useColorModeValue,
     Textarea,
     Select,
+    SimpleGrid,
+    GridItem
   } from "@chakra-ui/react";
 
   /**
@@ -32,6 +34,10 @@ function AddProperty() {
     const [type, setType] = useState("");
     const [area, setArea] = useState("");
     const [price, setPrice] = useState("");
+    const [surface, setSurface] = useState("");
+    const [levels, setLevels] = useState("");
+    const [rooms, setRooms] = useState("");
+    const [bathrooms, setBathrooms] = useState("");
     const [description, setDescription] = useState("");
     const { isAuth, loading, setIsLoading } = useContext(AppContext);
 
@@ -47,7 +53,11 @@ function AddProperty() {
               type,
               area,
               price,
-              description,
+              surface,
+              levels,
+              rooms,
+              bathrooms,
+              description
             },
             {
               withCredentials: true,
@@ -61,9 +71,13 @@ function AddProperty() {
           setIsLoading(false);
           setPlaceId("");
           setTitle("");
-          setType("")
-          setArea("")
-          setPrice("")
+          setType("");
+          setArea("");
+          setPrice("");
+          setSurface("");
+          setLevels("");
+          setRooms("");
+          setBathrooms("");
           setDescription("");
           navigate("/");
         } catch (error) {
@@ -82,7 +96,7 @@ function AddProperty() {
             justify={"center"}
             bg={useColorModeValue("gray.50", "gray.800")}
         >
-            <Stack px={16} >
+            <Stack px={6} width='800px'>
                 <Heading fontSize={"4xl"} textAlign={"left"} paddingBottom={"1rem"}>
                     New property classified
                 </Heading>
@@ -92,77 +106,116 @@ function AddProperty() {
                     boxShadow={"lg"}
                     p={8}
                 >
-                    <Stack spacing={4}>
-                    <FormControl id="title" isRequired>
-                        <FormLabel>Title</FormLabel>
-                        <Input
-                            type="text"
-                            placeholder="Classified title up to 155 chars"
-                            maxLength="155"
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </FormControl>
-                    <FormControl id="type" isRequired>
-                        <FormLabel>Type</FormLabel>
-                        <Select
-                            name="type"
-                            placeholder="Select type"
-                            onChange={(e) => setType(e.target.value)}
-                        >
-                            <option value="Rent">Rent</option>
-                            <option value="Buy">Buy</option>
-                            <option value="Exchange">Exchange</option>
-                            <option value="Donation">Donation</option>
-                        </Select>
-                    </FormControl>
-                    <FormControl id="area" isRequired>
-                        <FormLabel>Area</FormLabel>
-                        <SearchableDropdown
-                            label="mainText"
-                            id="area"
-                            selectedVal={area}
-                            placeholder={"Type in the property's area"}
-                            handleChange={(v) => {
-                                setArea(v?.mainText)
-                                setPlaceId(v?.placeId)
-                            }}
-                        />
-                    </FormControl>
-                    <FormControl id="price" isRequired>
-                        <FormLabel>Price</FormLabel>
-                        <InputGroup>
+                    <SimpleGrid
+                        columns={{sm: 1, xl: 2}}
+                        gap={6}>
+                        <FormControl id="title" isRequired>
+                            <FormLabel>Title</FormLabel>
                             <Input
-                                type="number"
-                                placeholder="Amount"
-                                onChange={(e) => setPrice(e.target.value)}
+                                type="text"
+                                placeholder="Classified title up to 155 chars"
+                                maxLength="155"
+                                onChange={(e) => setTitle(e.target.value)}
                             />
-                            <InputRightAddon children='€' />
-                        </InputGroup>
-                    </FormControl>
-                    <FormControl id="description">
-                        <FormLabel>Extra Description</FormLabel>
-                        <Textarea
-                            type="text"
-                            placeholder="Type here"
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                    </FormControl>
-                    <Stack spacing={10} pt={2}>
-                        <Button
-                            loadingText="Submitting"
-                            size="lg"
-                            bg={"blue.400"}
-                            color={"white"}
-                            _hover={{
-                                bg: "blue.500",
-                            }}
-                            isDisabled={loading ? true : false}
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </Button>
-                    </Stack>
-                    </Stack>
+                        </FormControl>
+                        <FormControl id="type" isRequired>
+                            <FormLabel>Type</FormLabel>
+                            <Select
+                                name="type"
+                                placeholder="Select type"
+                                onChange={(e) => setType(e.target.value)}
+                            >
+                                <option value="Rent">Rent</option>
+                                <option value="Buy">Buy</option>
+                                <option value="Exchange">Exchange</option>
+                                <option value="Donation">Donation</option>
+                            </Select>
+                        </FormControl>
+                        <FormControl id="area" isRequired>
+                            <FormLabel>Area</FormLabel>
+                            <SearchableDropdown
+                                label="mainText"
+                                id="area"
+                                selectedVal={area}
+                                placeholder={"Type in the property's area"}
+                                handleChange={(v) => {
+                                    setArea(v?.mainText)
+                                    setPlaceId(v?.placeId)
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl id="price" isRequired>
+                            <FormLabel>Price</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    type="number"
+                                    placeholder="Amount"
+                                    onChange={(e) => setPrice(e.target.value)}
+                                />
+                                <InputRightAddon children='€' />
+                            </InputGroup>
+                        </FormControl>
+                        <FormControl id="level">
+                            <FormLabel>Levels</FormLabel>
+                                <Input
+                                    type="number"
+                                    placeholder="Levles"
+                                    onChange={(e) => setLevels(e.target.value)}
+                                />
+                        </FormControl>
+                        <FormControl id="surface">
+                            <FormLabel>Surface Area</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    type="number"
+                                    placeholder="Surface Area"
+                                    onChange={(e) => setSurface(e.target.value)}
+                                />
+                                <InputRightAddon children='㎡' />
+                            </InputGroup>
+                        </FormControl>
+                        <FormControl id="rooms" >
+                            <FormLabel>Number of rooms</FormLabel>
+                                <Input
+                                    type="number"
+                                    placeholder="Number of rooms"
+                                    onChange={(e) => setRooms(e.target.value)}
+                                />
+                        </FormControl>
+                        <FormControl id="bathrooms">
+                            <FormLabel>Number of bathrooms</FormLabel>
+                                <Input
+                                    type="number"
+                                    placeholder="Number of bathrooms"
+                                    onChange={(e) => setBathrooms(e.target.value)}
+                                />
+                        </FormControl>
+                        <GridItem colSpan={{sm: 1, xl: 2}}>
+                            <FormControl id="description">
+                                <FormLabel>Extra Description</FormLabel>
+                                <Textarea
+                                    type="text"
+                                    placeholder="Type here"
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </FormControl>
+                        </GridItem>
+                        <GridItem colSpan={{sm: 1, xl: 2}}>
+                            <Button
+                                loadingText="Submitting"
+                                width={'100%'}
+                                bg={"blue.400"}
+                                color={"white"}
+                                _hover={{
+                                    bg: "blue.500",
+                                }}
+                                isDisabled={loading ? true : false}
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </Button>
+                        </GridItem>
+                    </SimpleGrid>
                 </Box>
             </Stack>
         </Flex>

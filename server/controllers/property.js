@@ -1,11 +1,11 @@
 import ErrorHandler from "../middlewares/error.js";
 import { PropertyModel } from "../models/property.js";
-import { createProxyMiddleware } from 'http-proxy-middleware'
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 // Insert new Property to DB
 export const AddNewProperty = async (req, res, next) => {
     try {
-        const { placeId, title, type, area, price, description } = req.body;
+        const { placeId, title, type, area, price, surface, levels, rooms, bathrooms, description } = req.body;
 
         await PropertyModel.create({
             placeId,
@@ -13,6 +13,10 @@ export const AddNewProperty = async (req, res, next) => {
             type,
             area,
             price,
+            surface,
+            levels,
+            rooms,
+            bathrooms,
             description,
             user: req.user
         })

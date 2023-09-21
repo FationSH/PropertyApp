@@ -22,6 +22,22 @@ const propertySchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    surface: {
+        type: Number,
+        required: false
+    },
+    levels: {
+        type: Number,
+        required: false
+    },
+    rooms: {
+        type: Number,
+        required: false
+    },
+    bathrooms: {
+        type: Number,
+        required: false
+    },
     description: {
         type: String,
         required: false
@@ -33,7 +49,7 @@ const propertySchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now
     }
 });
 

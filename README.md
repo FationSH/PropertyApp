@@ -20,6 +20,8 @@ Server in nodejs and express, uses mongo database. Functions also as a proxy ser
 ![image](https://github.com/FationSH/PropertyApp/blob/master/register_page.png)
 
 ## How to Run
+### Create a .env file in the server data folder. Use 127.0.0.1 instead of localhost for the MongoDB URL.
+
 Install on your pc (Windows)
 NodeJS: 18.14.0
 MongoDB: 7.0.1
